@@ -1,0 +1,19 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "kleisli/neos-documentcollection",
+    "version": "0.5.0",
+    "require": {
+        "neos/neos": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kleisli\\Neos\\DocumentCollection\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Kleisli.Neos.DocumentCollection"
+        }
+    }
+}

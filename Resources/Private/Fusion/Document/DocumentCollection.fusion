@@ -1,0 +1,81 @@
+prototype(Kleisli.Neos.DocumentCollection:Page) < prototype(Neos.Fusion:Component) {
+
+    defaultView = 'list'
+
+    renderer = Neos.Fusion:Case {
+        layoutView {
+            @position = "start"
+            condition = ${request.arguments.view == 'layout' || (props.defaultView == 'layout' && request.arguments.view != 'list')}
+            renderer = ${props.layoutView}
+        }
+
+        default {
+            @position = "end"
+            condition = true
+            renderer = Neos.Neos:Page {
+                head {
+                    stylesheets = afx`
+                        <link rel="stylesheet" type="text/css" href={StaticResource.uri('Neos.Neos', 'Public/Styles/Main.css')}/>
+                    `
+                }
+
+                bodyTag.attributes.class = "neos neos-module"
+
+                body = Neos.Fusion:Component {
+                    documents = Neos.Fusion:Loop {
+                        items = ${q(node).children('[instanceof Neos.Neos:Document]')}
+                        itemName = 'document'
+                        itemRenderer = Neos.Fusion:Component {
+                            icon = ${document.nodeType.fullConfiguration.ui.icon}
+                            renderer = afx`
+                                <tr class={(document.hiddenInIndex ? 'document-hiddenInIndex ':'')+(document.hidden ? 'document-hidden ':'')}>
+                                    <td>
+                                        {document.hiddenInIndex ? '<i class="fas fa-eye-slash"></i>':''}
+                                        {document.hidden ? '<span class="fa-stack"><i class="fas fa-circle fa-stack-1x"></i><i class="fa fa-times-circle fa-stack-1x"></i></span>':''}
+                                    </td>
+                                    <td>
+                                        <Neos.Neos:NodeLink node={document}>
+                                            <i class={'fas fa-' + props.icon + ' ' + props.icon} @if={props.icon}></i> {document.properties.title}
+                                        </Neos.Neos:NodeLink>
+                                    </td>
+
+                                </tr>
+                            `
+                        }
+                    }
+                    documents.@process.table = ${'<table class="neos-table">'+value+'</table>'}
+
+                    title = Neos.Neos:Editable {
+                        property = 'title'
+                        @process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+                    }
+                    icon = ${node.nodeType.fullConfiguration.ui.icon}
+
+                    renderer = afx`
+                        <Kleisli.Neos.DocumentCollection:Header currentView='list' />
+                        <div class="neos-module-wrap">
+                            <div class="neos-content neos-fluid-container neos-indented">
+                                <legend>
+                                    {props.title}
+                                </legend>
+                                {props.documents}
+                            </div></div>
+                    `
+                }
+            }
+        }
+    }
+
+    layoutView.body.renderer.@process.documentCollection = Kleisli.Neos.DocumentCollection:AddHeader {
+        header.currentView = 'layout'
+    }
+
+    @cache {
+        mode = 'uncached'
+        context {
+            1 = 'node'
+            2 = 'documentNode'
+        }
+    }
+
+}
