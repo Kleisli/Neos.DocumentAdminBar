@@ -30,10 +30,6 @@ prototype(Kleisli.Neos.DocumentCollection:Page) < prototype(Neos.Fusion:Componen
                             renderer = afx`
                                 <tr class={(document.hiddenInIndex ? 'document-hiddenInIndex ':'')+(document.hidden ? 'document-hidden ':'')}>
                                     <td>
-                                        {document.hiddenInIndex ? '<i class="fas fa-eye-slash"></i>':''}
-                                        {document.hidden ? '<span class="fa-stack"><i class="fas fa-circle fa-stack-1x"></i><i class="fa fa-times-circle fa-stack-1x"></i></span>':''}
-                                    </td>
-                                    <td>
                                         <Neos.Neos:NodeLink node={document}>
                                             <i class={'fas fa-' + props.icon + ' ' + props.icon} @if={props.icon}></i> {document.properties.title}
                                         </Neos.Neos:NodeLink>
