@@ -2,4 +2,4 @@ Neos:
   Neos:
     fusion:
       autoInclude:
-        'Kleisli.Neos.DocumentCollection': TRUE
+        'Kleisli.Neos.DocumentAdminBar': TRUE

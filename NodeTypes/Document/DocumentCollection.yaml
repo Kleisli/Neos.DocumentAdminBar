@@ -1,7 +1,0 @@
-'Kleisli.Neos.DocumentCollection:Page':
-  abstract: false
-  superTypes:
-    'Neos.Neos:Document': true
-  ui:
-    icon: 'folder'
-    label: 'DocumentCollection'

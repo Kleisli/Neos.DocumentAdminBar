@@ -1,0 +1,10 @@
+prototype(Kleisli.Neos.DocumentAdminBar:Component.AdminBar) < prototype(Neos.Fusion:Component) {
+
+    @if.inBackend = ${node.context.inBackend}
+
+    renderer = afx`
+        <div class="be-admin neos neos-module">
+            {props.content}
+        </div>
+    `
+}

@@ -1,0 +1,35 @@
+html {position: relative;top: 41px;}
+
+.neos.neos-module > .neos-module-wrap {padding-top: 20px;}
+
+.be-admin {
+    position: fixed;
+    top: 0;
+    left:0;
+    background-color: #000;
+    height: 40px;
+    width: 100%;
+    z-index: 10;
+    border-bottom: 1px solid #3f3f3f;
+    border-top:0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.be-admin .tab {
+    border-top: 2px solid #000;
+    display: inline-block;
+    padding: 0 16px;
+    height: 38px;
+    line-height: 38px;
+    border-left: 1px solid #3f3f3f
+}
+
+.be-admin .tab:hover {
+    color: #00ADEE;
+}
+
+.be-admin .tab.tab-active {
+    color: #00ADEE;
+    border-top: 2px solid #00ADEE;
+}
