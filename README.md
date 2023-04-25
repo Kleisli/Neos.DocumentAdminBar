@@ -1,5 +1,6 @@
 # Kleisli.Neos.DocumentAdminBar
-### :information_source: A backend admin bar on top of a document to provide backend functions implemented in the document prototype.
+A backend admin bar for Neos CMS to provide backend functions implemented in the document prototype.
+
 ![DocumentCollection](Resources/Public/Images/AdminBar.png)
 
 ## Usage

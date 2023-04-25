@@ -1,8 +1,7 @@
 {
-    "description": "",
     "type": "neos-package",
     "name": "kleisli/neos-documentadminbar",
-    "version": "0.5.0",
+    "description": "A backend admin bar for Neos CMS to provide backend functions implemented in the document prototype.",
     "require": {
         "neos/neos": "*"
     },
